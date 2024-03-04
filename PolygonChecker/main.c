@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdbool.h>
-
 #include "main.h"
 #include "triangleSolver.h"
 
