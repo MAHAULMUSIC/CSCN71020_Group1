@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include<math.h>
 #include "main.h"
 #include "triangleSolver.h"
-
+#define AMOUNT_OF_SIDES_IN_TRIANGLE 3
 int side = 0;
-
+void getTriangleAngles(float* sides, float* angles);
 int main() {
 	bool continueProgram = true;
 	while (continueProgram) {
@@ -60,4 +61,39 @@ int* getTriangleSides(int* triangleSides) {
 		scanf_s("%d", &triangleSides[i]);
 	}
 	return triangleSides;
+}
+
+void getTriangleAngles(float* sides, float* angles)
+{
+	float pi = 3.14159;
+
+	float sidessquared[AMOUNT_OF_SIDES_IN_TRIANGLE];
+
+	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
+	{
+		sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
+	}
+
+	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
+	{
+		if (loop_variable == 0)
+		{
+			angles[0] = ((sidessquared[1] + sidessquared[2] - sidessquared[0]) / (2 * (sides[1] * sides[2])));
+			angles[0] = acos(angles[0]);
+			angles[0] = angles[0] * 180 / pi;
+		}
+		if (loop_variable == 1)
+		{
+			angles[1] = ((sidessquared[0] + sidessquared[2] - sidessquared[1]) / (2 * (sides[0] * sides[2])));
+			angles[1] = acos(angles[1]);
+			angles[1] = angles[1] * 180 / pi;
+		}
+		if (loop_variable == 2)
+		{
+			angles[2] = ((sidessquared[0] + sidessquared[1] - sidessquared[2]) / (2 * (sides[0] * sides[1])));
+			angles[2] = acos(angles[2]);
+			angles[2] = angles[2] * 180 / pi;
+		}
+	}
+
 }
