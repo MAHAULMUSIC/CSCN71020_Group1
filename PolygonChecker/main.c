@@ -54,7 +54,11 @@ int printShapeMenu() {
 	int shapeChoice;
 
 	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+	int valid_check = scanf_s("%d", &shapeChoice);
+	if (valid_check != 1)
+	{
+		while (getchar() != '\n');
+	}
 
 	return shapeChoice;
 }
