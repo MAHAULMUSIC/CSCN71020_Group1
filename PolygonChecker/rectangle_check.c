@@ -22,19 +22,19 @@ void linechecker(POINT p1, POINT p2, POINT p3, POINT p4) {
 	
 	//case 1 when side1 and side2 are equal
 	if ((side1 == side2) && (side3 == side4)) {
-		float perimeter = (side1 + s(ide2 + side3 + side4);
+		float perimeter = (side1 + side2 + side3 + side4);
 		float area = (side1 * side3);
 	}
 
 	// case 2 when side1 and side3 are equal
 	else if ((side1 == side3) && (side2 == side4)) {
-		float perimeter = (side1 + s(ide2 + side3 + side4);
+		float perimeter = (side1 + side2 + side3 + side4);
 		float area = (side1 * side3);
 	}
 
 	else {
 		fprintf(stderr, "Points dont make a rectangle.")
 	}
-
+	return 0;
 
 }
