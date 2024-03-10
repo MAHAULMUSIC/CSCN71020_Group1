@@ -3,14 +3,17 @@
 #include<math.h>
 #include "main.h"
 #include "triangleSolver.h"
+
 #define AMOUNT_OF_SIDES_IN_TRIANGLE 3
-#define XYCoordinateAmounts 8
+
 int side = 0;
+
 void getTriangleAngles(float* sides, float* angles);
-void Rectangleuserinput(int* coordiante);
+
 int main() {
+
 	bool continueProgram = true;
-	 while (continueProgram) {
+	while (continueProgram) {
 		printWelcome();
 
 		int shapeChoice = printShapeMenu();
@@ -18,16 +21,13 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf_s("Triangle selected.\n"); 
-
+			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			/*printf_s("! %d\n", triangleSidesPtr[0]);*/
+			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-			break; 
-		
-
+			break;
 		case 0:
 			continueProgram = false;
 			break;
@@ -60,32 +60,11 @@ int printShapeMenu() {
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf("Enter the three sides of the triangle: ");
-
-	for (int i = 0; i < 3; i++) {
-		printf("Side %d: ", i + 1);
-
-		// Input validation 
-		while (1) {                     
-			if (scanf_s("%d", &triangleSides[i]) == 1) {
-				if (triangleSides[i] > 0) {
-					break; 
-				}
-				else {
-					printf("Invalid input. Please enter a positive integer for side %d: ", i + 1);
-				}
-			}
-			else {
-				// Clear the input buffer to handle non-integer inputs
-				while (getchar() != '\n');
-
-				printf("Invalid input. Please enter a valid integer for side %d: ", i + 1);
-			}
-		}
+	printf_s("Enter the three sides of the triangle: ");
+	for (int i = 0; i < 3; i++)
+	{
+		scanf_s("%d", &triangleSides[i]);
 	}
-
-	
-
 	return triangleSides;
 }
 
@@ -123,52 +102,6 @@ void getTriangleAngles(float* sides, float* angles)
 	}
 
 }
-void Rectangleuserinput(int* coordiante)
-{
-	int valid_check_1 = 0;
-	int valid_check_2 = 0;
-	int pair_counter_display_variable = 1;
-	for (int loop_variable = 0; loop_variable < XYCoordinateAmounts; loop_variable += 2)
-	{
-		do
-		{
-			printf("Please enter the x coordinate for the pair %d: ", pair_counter_display_variable);
-			int numbercheck = scanf("%d", &coordiante[loop_variable]);
-			if (numbercheck != 1)
-			{
-				printf("Input error\n");
-				while (getchar() != '\n');
-				continue;
-			}
-			else
-			{
-				valid_check_1 += 1;
-			}
-
-		} while (valid_check_1 <= 0);
-
-		do
-		{
-			printf("Please enter the y coordinate for the pair %d: ", pair_counter_display_variable);
-			int numbercheck = scanf("%d", &coordiante[loop_variable + 1]);
-			if (numbercheck != 1)
-			{
-				printf("Input error\n");
-				while (getchar() != '\n');
-				continue;
-			}
-			else
-			{
-				valid_check_2 += 1;
-			}
-
-		} while (valid_check_2 <= 0);
-
-		pair_counter_display_variable++;
 
 
-	}
-
-
-}
 
