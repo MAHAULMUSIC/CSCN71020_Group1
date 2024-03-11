@@ -3,9 +3,9 @@
 #include<math.h>
 #include "main.h"
 #include "triangleSolver.h"
-
+#define XYCoordinateAmounts 8
 #define AMOUNT_OF_SIDES_IN_TRIANGLE 3
-
+void Rectangleuserinput(int* coordiante);
 int side = 0;
 
 void getTriangleAngles(float* sides, float* angles);
@@ -104,6 +104,54 @@ void getTriangleAngles(float* sides, float* angles)
 			angles[2] = angles[2] * 180 / pi;
 		}
 	}
+
+}
+void Rectangleuserinput(int* coordiante)
+{
+	int valid_check_1 = 0;
+	int valid_check_2 = 0;
+	int pair_counter_display_variable = 1;
+	for (int loop_variable = 0; loop_variable < XYCoordinateAmounts; loop_variable += 2)
+	{
+		do
+		{
+			printf("Please enter the x coordinate for the pair %d: ", pair_counter_display_variable);
+			int numbercheck = scanf("%d", &coordiante[loop_variable]);
+			if (numbercheck != 1)
+			{
+				printf("Input error\n");
+				while (getchar() != '\n');
+				continue;
+			}
+			else
+			{
+				valid_check_1 += 1;
+			}
+
+		} while (valid_check_1 <= 0);
+
+		do
+		{
+			printf("Please enter the y coordinate for the pair %d: ", pair_counter_display_variable);
+			int numbercheck = scanf("%d", &coordiante[loop_variable + 1]);
+			if (numbercheck != 1)
+			{
+				printf("Input error\n");
+				while (getchar() != '\n');
+				continue;
+			}
+			else
+			{
+				valid_check_2 += 1;
+			}
+
+		} while (valid_check_2 <= 0);
+
+		pair_counter_display_variable++;
+
+
+	}
+
 
 }
 

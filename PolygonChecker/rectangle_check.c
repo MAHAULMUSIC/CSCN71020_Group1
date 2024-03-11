@@ -33,7 +33,7 @@ void linechecker(POINT p1, POINT p2, POINT p3, POINT p4) {
 	}
 
 	else {
-		fprintf(stderr, "Points dont make a rectangle.")
+		fprintf(stderr, "Points dont make a rectangle.");
 	}
 	return 0;
 
