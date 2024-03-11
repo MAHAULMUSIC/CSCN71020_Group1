@@ -82,7 +82,7 @@ int printShapeMenu() {
 				}
 				else {
 					
-					while (getchar() != '\n'); / Clear the input buffer to handle non - integer inputs
+					while (getchar() != '\n'); // Clear the input buffer to handle non - integer inputs
 
 					printf("Invalid input. Please enter a valid integer for side %d: ", i + 1);
 				}

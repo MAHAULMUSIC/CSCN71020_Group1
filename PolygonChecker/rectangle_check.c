@@ -7,7 +7,7 @@
 // we need to find the distance between all the points using euclidian distance.
 float distance_between_points(POINT point1, POINT point2) {
 	float distance = 0;
-	distance = sqrt(pow((point1.x - point2.x), 2) + pow((point1.x - point2.x), 2));
+	distance = sqrt(pow((point1.x - point2.x), 2) + pow((point1.y - point2.y), 2));
 	return distance;
 }
 
@@ -35,6 +35,5 @@ void linechecker(POINT p1, POINT p2, POINT p3, POINT p4) {
 	else {
 		fprintf(stderr, "Points dont make a rectangle.");
 	}
-	return 0;
 
 }
