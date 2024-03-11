@@ -27,7 +27,7 @@ namespace PolygonFunctionTesting
 	TEST_CLASS(PolygonFunctionTesting)
 	{
 	public:
-		
+
 		TEST_METHOD(TestMethod1)
 		{
 
