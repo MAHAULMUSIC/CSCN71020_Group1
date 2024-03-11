@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-extern "C" {
+extern "C" 
 #include"trianglesolver.h"
-}
+
 #define AMOUNT_OF_SIDES_IN_TRIANGLE 3
 extern "C" void getTriangleAngles(float* sides, float* angles);
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -33,6 +33,7 @@ namespace PolygonFunctionTesting
 			int expected = 180;
 			int actual = (int)(angles[0] + angles[1] + angles[2]);
 			Assert::AreEqual(actual, expected);
-		}
+		} 
+		TEST_METHOD()
 	};
 }

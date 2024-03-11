@@ -63,14 +63,35 @@ int printShapeMenu() {
 	return shapeChoice;
 }
 
-int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
-	{
-		scanf_s("%d", &triangleSides[i]);
+	int* getTriangleSides(int* triangleSides) {
+		printf("Enter the three sides of the triangle: ");
+
+		for (int i = 0; i < 3; i++) {
+			printf("Side %d: ", i + 1);
+
+			 
+			while (1) {                                               // Input validation
+				if (scanf_s("%d", &triangleSides[i]) == 1) {
+					if (triangleSides[i] > 0) {
+						break;
+					}
+					else {
+						printf("Invalid input. Please enter a positive integer for side %d: ", i + 1);
+					}
+				}
+				else {
+					
+					while (getchar() != '\n'); / Clear the input buffer to handle non - integer inputs
+
+					printf("Invalid input. Please enter a valid integer for side %d: ", i + 1);
+				}
+			}
+		}
+
+
+
+		return triangleSides;
 	}
-	return triangleSides;
-}
 
 void getTriangleAngles(float* sides, float* angles)
 {
