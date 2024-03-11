@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include<ctype.h>
 #include<math.h>
 #include "main.h"
 #include "rectangle_check.h"
@@ -9,7 +10,7 @@
 POINT Rectangleuserinput();
 int side = 0;
 
-void getTriangleAngles(float* sides, float* angles);
+bool getTriangleAngles(float* sides, float* angles);
 
 int main() {
 
@@ -82,7 +83,7 @@ int printShapeMenu() {
 				}
 				else {
 					
-					while (getchar() != '\n'); / Clear the input buffer to handle non - integer inputs
+					while (getchar() != '\n'); // Clear the input buffer to handle non - integer inputs
 
 					printf("Invalid input. Please enter a valid integer for side %d: ", i + 1);
 				}
@@ -94,7 +95,7 @@ int printShapeMenu() {
 		return triangleSides;
 	}
 
-void getTriangleAngles(float* sides, float* angles)
+bool getTriangleAngles(float* sides, float* angles)
 {
 	float pi = 3.14159;
 
@@ -102,7 +103,14 @@ void getTriangleAngles(float* sides, float* angles)
 
 	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
 	{
-		sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
+		if (isdigit(sides[loop_variable]) == 0)
+		{
+			return false;
+		}
+		else
+		{
+			sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
+		}
 	}
 
 	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
@@ -126,7 +134,7 @@ void getTriangleAngles(float* sides, float* angles)
 			angles[2] = angles[2] * 180 / pi;
 		}
 	}
-
+	return true;
 }
 POINT Rectangleuserinput()
 {
