@@ -2,10 +2,11 @@
 #include <stdbool.h>
 #include<math.h>
 #include "main.h"
+#include "rectangle_check.h"
 #include "triangleSolver.h"
 #define XYCoordinateAmounts 8
 #define AMOUNT_OF_SIDES_IN_TRIANGLE 3
-void Rectangleuserinput(int* coordiante);
+POINT Rectangleuserinput();
 int side = 0;
 
 void getTriangleAngles(float* sides, float* angles);
@@ -106,53 +107,42 @@ void getTriangleAngles(float* sides, float* angles)
 	}
 
 }
-void Rectangleuserinput(int* coordiante)
+POINT Rectangleuserinput()
 {
-	int valid_check_1 = 0;
-	int valid_check_2 = 0;
-	int pair_counter_display_variable = 1;
-	for (int loop_variable = 0; loop_variable < XYCoordinateAmounts; loop_variable += 2)
+	POINT p;
+	int input_value_1 = 0;
+
+	while (input_value_1 == 0)
 	{
-		do
+		printf("Please enter a input for x: ");
+		int valid_check_1 = scanf("%d", &p.x);
+		if (valid_check_1 != 1)
 		{
-			printf("Please enter the x coordinate for the pair %d: ", pair_counter_display_variable);
-			int numbercheck = scanf("%d", &coordiante[loop_variable]);
-			if (numbercheck != 1)
-			{
-				printf("Input error\n");
-				while (getchar() != '\n');
-				continue;
-			}
-			else
-			{
-				valid_check_1 += 1;
-			}
-
-		} while (valid_check_1 <= 0);
-
-		do
+			printf("invalid input\n");
+			while (getchar() != '\n');
+		}
+		else
 		{
-			printf("Please enter the y coordinate for the pair %d: ", pair_counter_display_variable);
-			int numbercheck = scanf("%d", &coordiante[loop_variable + 1]);
-			if (numbercheck != 1)
-			{
-				printf("Input error\n");
-				while (getchar() != '\n');
-				continue;
-			}
-			else
-			{
-				valid_check_2 += 1;
-			}
-
-		} while (valid_check_2 <= 0);
-
-		pair_counter_display_variable++;
-
-
+			input_value_1 = 1;
+		}
 	}
 
-
+	int input_value_2 = 0;
+	while (input_value_2 == 0)
+	{
+		printf("please enter a input for y: ");
+		int valid_check_2 = scanf("%d", &p.y);
+		if (valid_check_2 != 1)
+		{
+			printf("invalid input\n");
+			while (getchar() != '\n');
+		}
+		else
+		{
+			input_value_2 = 1;
+		}
+	}
+	return p;
 }
 
 

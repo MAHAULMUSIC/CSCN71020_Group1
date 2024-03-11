@@ -1,7 +1,7 @@
 #pragma once
 
 //defining a structure that ensures each point has an x and y value
-typedef struct {
+typedef struct point{
 	int x;
 	int y;
 }POINT;
