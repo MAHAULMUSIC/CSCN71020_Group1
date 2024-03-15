@@ -10,8 +10,6 @@
 POINT Rectangleuserinput();
 int side = 0;
 
-bool getTriangleAngles(float* sides, float* angles);
-
 int main() {
 
 	bool continueProgram = true;
@@ -65,77 +63,6 @@ int printShapeMenu() {
 	return shapeChoice;
 }
 
-	int* getTriangleSides(int* triangleSides) {
-		printf("Enter the three sides of the triangle: ");
-
-		for (int i = 0; i < 3; i++) {
-			printf("Side %d: ", i + 1);
-
-			 
-			while (1) {                                               // Input validation
-				if (scanf_s("%d", &triangleSides[i]) == 1) {
-					if (triangleSides[i] > 0) {
-						break;
-					}
-					else {
-						printf("Invalid input. Please enter a positive integer for side %d: ", i + 1);
-					}
-				}
-				else {
-					
-					while (getchar() != '\n'); // Clear the input buffer to handle non - integer inputs
-
-					printf("Invalid input. Please enter a valid integer for side %d: ", i + 1);
-				}
-			}
-		}
-
-
-
-		return triangleSides;
-	}
-
-bool getTriangleAngles(float* sides, float* angles)
-{
-	float pi = 3.14159;
-
-	float sidessquared[AMOUNT_OF_SIDES_IN_TRIANGLE];
-
-	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
-	{
-		if (isdigit(sides[loop_variable]) == 0)
-		{
-			return false;
-		}
-		else
-		{
-			sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
-		}
-	}
-
-	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
-	{
-		if (loop_variable == 0)
-		{
-			angles[0] = ((sidessquared[1] + sidessquared[2] - sidessquared[0]) / (2 * (sides[1] * sides[2])));
-			angles[0] = acos(angles[0]);
-			angles[0] = angles[0] * 180 / pi;
-		}
-		if (loop_variable == 1)
-		{
-			angles[1] = ((sidessquared[0] + sidessquared[2] - sidessquared[1]) / (2 * (sides[0] * sides[2])));
-			angles[1] = acos(angles[1]);
-			angles[1] = angles[1] * 180 / pi;
-		}
-		if (loop_variable == 2)
-		{
-			angles[2] = ((sidessquared[0] + sidessquared[1] - sidessquared[2]) / (2 * (sides[0] * sides[1])));
-			angles[2] = acos(angles[2]);
-			angles[2] = angles[2] * 180 / pi;
-		}
-	}
-	return true;
-}
 POINT Rectangleuserinput()
 {
 	POINT p;

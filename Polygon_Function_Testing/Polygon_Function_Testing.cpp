@@ -13,7 +13,6 @@ extern "C" {
 }
 
 // externing all functions that we want to test/use 
-extern "C" void getTriangleAngles(float* sides, float* angles);
 extern "C" float distance_between_points(POINT point1, POINT point2);
 extern "C" void linechecker(POINT p1, POINT p2, POINT p3, POINT p4);
 
@@ -81,7 +80,7 @@ namespace PolygonFunctionTesting
 			POINT p2 = { 1, 1 };
 			float expected = 1.414;
 			float actual = distance_between_points(p1, p2);
-			Assert::AreEqual(expected, actual, 0.001);
+			Assert::AreEqual(expected, actual);
 		}
 
 	};
