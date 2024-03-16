@@ -77,7 +77,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\nateb\source\repos\CSCN71020_Group1\PolygonChecker;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <ExternalIncludePath>C:\Assignments\soft imp\16.3.24\Project\PolygonChecker;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -100,7 +101,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\nbon8\source\repos\SCHOOL\SOFTIMP\ASSINMENT 3\PolygonChecker\x64\Debug;C:\Users\armaan\source\repos\CSCN71020_Group1\PolygonChecker\x64\Debug;C:\Users\nateb\source\repos\CSCN71020_Group1\PolygonChecker\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Assignments\soft imp\16.3.24\Project\PolygonChecker\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>main.obj;triangleSolver.obj;rectangle_check.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
