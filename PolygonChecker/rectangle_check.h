@@ -1,5 +1,7 @@
 #pragma once
 #include <stdbool.h>
+//Rectangle Check interface
+//Group 1 - CSCN71000
 
 //defining a structure that ensures each point has an x and y value
 typedef struct point{
