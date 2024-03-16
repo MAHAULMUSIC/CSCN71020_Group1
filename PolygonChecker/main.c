@@ -22,11 +22,19 @@ int main() {
 		{ 
 		case 1:
 			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
+			int triangleSides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { 0, 0, 0 };
+			float triangleangles[AMOUNT_OF_SIDES_IN_TRIANGLE];
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+			float trianglefloatsides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { triangleSides[0], triangleSides[1], triangleSides[2], };
+			bool check = getTriangleAngles(trianglefloatsides, triangleangles);
+			if (check == false)
+			{
+				break;
+			}
+			printf("the angles of the triangle are %f %f %f\n", triangleangles[0], triangleangles[1], triangleangles[2]);
 			break;
 
 		//case 2 to be added for rectangle. 
