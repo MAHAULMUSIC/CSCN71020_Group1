@@ -14,7 +14,8 @@ extern "C" {
 
 // externing all functions that we want to test/use 
 extern "C" float distance_between_points(POINT point1, POINT point2);
-extern "C" void linechecker(POINT p1, POINT p2, POINT p3, POINT p4);
+extern "C" bool linechecker(POINT p1, POINT p2, POINT p3, POINT p4);
+extern "C" bool mostlyEqual(double a, double b);
 
 // defining constants 
 #define AMOUNT_OF_SIDES_IN_TRIANGLE 3
@@ -23,7 +24,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolygonFunctionTesting
 {
-	TEST_CLASS(PolygonFunctionTesting)
+	TEST_CLASS(TriangleAngleTesting)
 	{
 	public:
 
@@ -32,7 +33,7 @@ namespace PolygonFunctionTesting
 
 		}
 
-		TEST_METHOD(Triangle_angle_Test_1)
+		TEST_METHOD(Triangleangle_Test1)
 		{
 			float sides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { 57, 90, 45 };
 			float angles[AMOUNT_OF_SIDES_IN_TRIANGLE];
@@ -42,7 +43,7 @@ namespace PolygonFunctionTesting
 			Assert::AreEqual(actual, expected);
 		}
 
-		TEST_METHOD(Triangle_angle_Test_2)
+		TEST_METHOD(Triangleangle_Test2)
 		{
 			float sides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { 1, 1, 1 };
 			float angles[AMOUNT_OF_SIDES_IN_TRIANGLE];
@@ -53,7 +54,7 @@ namespace PolygonFunctionTesting
 		} 
 	};
 
-	TEST_CLASS(RectangleFunctionTesting)
+	TEST_CLASS(DistanceCheckerTesting)
 	{
 	public:
 
@@ -80,8 +81,63 @@ namespace PolygonFunctionTesting
 			POINT p2 = { 1, 1 };
 			float expected = 1.414;
 			float actual = distance_between_points(p1, p2);
+			Assert::IsTrue(mostlyEqual(expected, actual));
+		}
+
+		TEST_METHOD(DistanceChecker_Test4) {
+			POINT p1 = { 0, 0 };
+			POINT p2 = { 0, 0 };
+			float expected = 0.0;
+			float actual = distance_between_points(p1, p2);
 			Assert::AreEqual(expected, actual);
 		}
+
+	};
+
+	TEST_CLASS(RectangleCheckerTesting)
+	{
+	public:
+
+		// testing the Rectangle Checker 
+
+	
+		TEST_METHOD(RectangleChecker_Test1) {
+			// all sides are equal
+			POINT p1 = { 0, 0 };
+			POINT p2 = { 1, 0 };
+			POINT p3 = { 1, 1 };
+			POINT p4 = { 0, 1 };
+			Assert::IsTrue(linechecker(p1, p2, p3, p4));
+
+		}
+
+		TEST_METHOD(RectangleChecker_Test2) {
+			// one longer side and one shorter side
+			POINT p1 = { 0, 0 };
+			POINT p2 = { 2, 0 }; 
+			POINT p3 = { 2, 1 };
+			POINT p4 = { 0, 1 }; 
+			Assert::IsTrue(linechecker(p1, p2, p3, p4));
+		}
+
+		TEST_METHOD(RectangleChecker_Test3) {
+			// this forms a random shape 
+			POINT p1 = { 0, 0 };
+			POINT p2 = { 1, 0 };
+			POINT p3 = { 1, 2 }; 
+			POINT p4 = { 0, 1 };
+			Assert::IsFalse(linechecker(p1, p2, p3, p4));
+		}
+
+		TEST_METHOD(RectangleChecker_Test4) {
+			// forms a straight line
+			POINT p1 = { 0, 0 };
+			POINT p2 = { 1, 1 };
+			POINT p3 = { 2, 2 };
+			POINT p4 = { 3, 3 };
+			Assert::IsFalse(linechecker(p1, p2, p3, p4));
+		}
+
 
 	};
 }
