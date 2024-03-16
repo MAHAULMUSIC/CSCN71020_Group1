@@ -20,27 +20,6 @@ int main() {
 
 		switch (shapeChoice)
 		{ 
-		 
-		case 2: 
-			printf("Rectangle selected.\n");
-			POINT p1, p2, p3, p4;
-
-			// Input for each point with a single prompt
-			printf("Enter First pair of coordinates (x y): ");
-			scanf_s("%d %d", &p1.x, &p1.y);
-			printf("Enter Second pair of coordinates (x y): ");
-			scanf_s("%d %d", &p2.x, &p2.y);
-			printf("Enter third pair coordinates (x y): ");
-			scanf_s("%d %d", &p3.x, &p3.y);
-			printf("Enter fourth pair coordinates (x y): ");
-			scanf_s("%d %d", &p4.x, &p4.y);
-
-			// Calling linechecker with the input points
-			bool result1 = linechecker(p1, p2, p3, p4);
-			printf(result1 ? "Line check passed.\n" : "Line check failed.\n");
-			break;
-		
-			
 		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
@@ -51,6 +30,24 @@ int main() {
 			break;
 
 		//case 2 to be added for rectangle. 
+		case 2:
+			printf("Rectangle selected.\n");
+			POINT p1, p2, p3, p4;
+
+			// Input for each point with a single prompt
+			printf("Getting Coordiantes for corner 1\n");
+			p1 = Rectangleuserinput();
+			printf("Getting Coordiantes for corner 2\n");
+			p2 = Rectangleuserinput();
+			printf("Getting Coordiantes for corner 3\n");
+			p3 = Rectangleuserinput();
+			printf("Getting Coordiantes for corner 4\n");
+			p4 = Rectangleuserinput();
+
+			// Calling linechecker with the input points
+			bool result1 = linechecker(p1, p2, p3, p4);
+			printf(result1 ? "Line check passed.\n" : "Line check failed.\n");
+			break;
 
 		case 0:
 			continueProgram = false;
@@ -72,7 +69,6 @@ void printWelcome() {
 }
 
 int printShapeMenu() { 
-	printf_s("2. Rectangle\n");
 	printf_s("1. Triangle\n");
 	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
