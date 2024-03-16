@@ -47,7 +47,15 @@ namespace PolygonFunctionTesting
 			int actual = (int)(angles[0] + angles[1] + angles[2]);
 			Assert::AreEqual(actual, expected);
 		} 
-
+		TEST_METHOD(Triangleangle_Test_3)
+		{
+			float sides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { -1, -1, -1 };
+			float angles[AMOUNT_OF_SIDES_IN_TRIANGLE];
+			getTriangleAngles(sides, angles);
+			int expected = 180;
+			int actual = (int)(angles[0] + angles[1] + angles[2]);
+			Assert::AreNotEqual(actual, expected);
+		}
 	};
 
 	TEST_CLASS(DistanceCheckerTesting)

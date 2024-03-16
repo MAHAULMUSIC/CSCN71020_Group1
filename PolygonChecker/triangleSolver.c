@@ -59,7 +59,12 @@ bool getTriangleAngles(float* sides, float* angles)
 	for (int loop_variable = 0; loop_variable < AMOUNT_OF_SIDES_IN_TRIANGLE; loop_variable++)
 	{
 
-			sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
+		if (sides[loop_variable] < 0)
+		{
+			return false;
+		}
+		else if()
+		sidessquared[loop_variable] = sides[loop_variable] * sides[loop_variable];
 
 	}
 
