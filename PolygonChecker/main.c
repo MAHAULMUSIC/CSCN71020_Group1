@@ -27,6 +27,11 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			if (result == "Not a Triangle")
+			{
+				printf("%s\n", result);
+				break;
+			}
 			printf_s("%s\n", result);
 			float trianglefloatsides[AMOUNT_OF_SIDES_IN_TRIANGLE] = { triangleSides[0], triangleSides[1], triangleSides[2], };
 			bool check = getTriangleAngles(trianglefloatsides, triangleangles);
